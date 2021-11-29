@@ -1,0 +1,8 @@
+{
+  "rawPath": "/createperson",
+  "queryStringParameters": {
+    "firstName": "Marco",
+    "lastName": "Di Toro",
+    "email": "Marco@DiToro@somemail.com"
+  }
+}
