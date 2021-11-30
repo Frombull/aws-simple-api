@@ -1,24 +1,40 @@
 import json
+import logging as log
 
-print('Loading function')
+
+log.basicConfig(level=log.INFO,
+                format='[%(levelname)s] (%(asctime)s) - %(message)s',
+                datefmt='%H:%M:%S')
+
+log.info('Loading function')
 
 
 def lambda_handler(event, context):
-    # 1. Parse out query string params
+    # Parse out query string params
     rawPath = event['rawPath']
     firstName = event['queryStringParameters']['firstName']
     lastName = event['queryStringParameters']['lastName']
     email = event['queryStringParameters']['email']
 
-    # 2. Construct the body of the response object
-    Response = {
-        "rawPath": rawPath,
-        "firstName": firstName,
-        "lastName": lastName,
-        "email": email
-    }
+    # Process data
+    if eventPath(event) == 'get':
+        Response = {
+            "rawPath": rawPath,
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "message": "GET METHOD"
+        }
+    elif eventPath(event) == 'create':
+        Response = {
+            "rawPath": rawPath,
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "message": "USER CREATED"
+        }
 
-    # 3. Create http response object
+    # Create http response object
     responseObject = {
         "statusCode": 200,
         "headers": {
@@ -29,3 +45,12 @@ def lambda_handler(event, context):
 
     # 4. Return
     return responseObject
+
+
+def eventPath(event):
+    if event['rawPath'].lower() == '/getperson':
+        return 'get'
+    elif event['rawPath'].lower() == '/createperson':
+        return 'create'
+    else:
+        return None
