@@ -2,7 +2,7 @@ import json
 
 import boto3
 from botocore.config import Config
-#from botocore.exceptions import ClientError
+from botocore.exceptions import ClientError
 
 from logger import ColorLog
 
@@ -34,6 +34,7 @@ def savePerson(*, first_name: str, last_name: str, email: str) -> dict:
         log.info('Item added successfuly!')
     else:
         log.error(f'{http_code}, Error adding item to DB ')
+
     return response
 
 
@@ -54,7 +55,7 @@ def getPerson(*, first_name: str, last_name: str):
 
 
 if __name__ == '__main__':
-    #savePerson(first_name='Bãojão', last_name='Do pão', email='teupai@gmail.com')
-    #getPerson(first_name='Marco', last_name='Di Toro')
+    #savePerson(first_name='TestFirstName', last_name='TestLastName', email='test@somemail.com')
+    #getPerson(first_name='Bestfirstname', last_name='Evenbetterlastname')
     pass
 
