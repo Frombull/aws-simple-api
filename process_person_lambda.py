@@ -1,6 +1,6 @@
 import json
 
-from logger import ColorLog
+from color_logger import ColorLog
 
 log = ColorLog()
 log.info('Loading lambda function')

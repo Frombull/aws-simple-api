@@ -4,7 +4,7 @@ import boto3
 from botocore.config import Config
 from botocore.exceptions import ClientError
 
-from logger import ColorLog
+from color_logger import ColorLog
 
 
 my_config = Config(
