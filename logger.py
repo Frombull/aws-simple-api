@@ -1,12 +1,12 @@
 import logging
 
 
+# TODO: Make the color part of 'ColorLog' lul
 class ColorLog:
     def __init__(self):
         logging.basicConfig(level=logging.INFO,
                             format='[%(levelname)s] (%(asctime)s) - %(message)s',
-                            datefmt='%H:%M:%S'
-                            )
+                            datefmt='%H:%M:%S')
 
     @staticmethod
     def info(message: str):
